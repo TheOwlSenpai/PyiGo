@@ -1,4 +1,3 @@
-# PyiGO test 1
 # author: TheOwl77
 
 from enum import Enum
@@ -16,11 +15,11 @@ tegoma = [181, 180]
 captured = [0, 0]
 
 # ENUMS
-class te(enum):
-    n = 0
+class te(Enum):
+    none = 0
     s = 1
     g = 2
-    b = 3
+    bd = 3
 
 # CREATE THE BOARDS
 if bd == 9:
@@ -34,3 +33,10 @@ if bd == 9:
 
     group = [[[0 for _ in range(bd)] for _ in range(bd)] for _ in range(2)] # numerating each existing group of stones, array3d, cycle reset
 
+def printBoard():
+    for i=1 in range(bd):
+        print(i + ".\t")
+        for i2=1 in range(bd):
+            if goban[i][i2] == te.none:
+                print("+")
+            if i2 == 
