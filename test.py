@@ -39,4 +39,4 @@ def printBoard():
         for i2=1 in range(bd):
             if goban[i][i2] == te.none:
                 print("+")
-            if i2 == 
+            if i2 ==  
