@@ -1,6 +1,7 @@
 # author: TheOwl77
 
-from enum import Enum
+from enum import IntEnum
+
 
 # GLOBAL
 bd = 9
@@ -15,7 +16,7 @@ tegoma = [181, 180]
 captured = [0, 0]
 
 # ENUMS
-class te(Enum):
+class te(IntEnum):
     none = 0
     s = 1
     g = 2
@@ -26,7 +27,7 @@ if bd == 9:
     goban = [[0 for _ in range(bd+1)] for _ in range(bd+1)]
     for i in range(bd+1):
         for i2 in range(bd+1):
-            if (i == 0 or i == bd) or (i2 == 0 or i2 == bd):
+            if (i == 0 or i == bd+1) or (i2 == 0 or i2 == bd+1):
                 goban[i][i2] = te.b
 
     lib = [[[False for _ in range(bd)] for _ in range(bd)] for _ in range(2)] # Liberties, array3d, cycle reset
@@ -34,28 +35,47 @@ if bd == 9:
     group = [[[0 for _ in range(bd)] for _ in range(bd)] for _ in range(2)] # numerating each existing group of stones, array3d, cycle reset
 
 # FUNCTIONS 
+
+goban[4][3] = te.s
+goban[6][4] = te.g
+def count(n): # doing range(1, n+1) is terrible to see
+    return range(1, n+1, 1)
+
+def printf(*n):
+    print(*n, end="")
+
 def printBoard():
-    for i=1 in range(bd):
+    for i in count(bd):
         if i == 1:
-            print("\t")
-            for i2=1 in range(bd):
+            printf("    ")
+            for i2 in count(bd):
                 if i2 <= 9:
-                    print(i2 + ".  ")
+                    printf("%d.  " % i2)
                 else:
-                    print(i2 + ". ")
+                    printf("%d. " % i2)
 
-        print(i + ".\t")
+        printf("\n%d.  " % (i))
 
-        for i2=1 in range(bd):
-            match goban[i][ii2]:
-                case te.none:
-                    print
-            if i2 < d:
-                print(" - ")
+        for i2 in count(bd):
+            if goban[i][i2] == te.none:
+                printf("+")
+            elif goban[i][i2] == te.s:
+                printf("◉")
+            elif goban[i][i2] == te.g:
+                printf("○")
+
+            if i2 < bd:
+                printf(" - ")
             else:
-                print("\n")
+                printf("\n")
         
         if i < bd:
-            print("\t|")
+            printf("    |")
             for i2 in range(bd-1):
-                print("   |")
+                printf("   |")
+
+printBoard()
+
+printf("a")
+printf("b")
+
