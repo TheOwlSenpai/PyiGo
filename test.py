@@ -17,7 +17,7 @@ captured = [0, 0]
 
 # ENUMS
 class te(IntEnum):
-    none = 0
+    n = 0
     s = 1
     g = 2
     b = 3
@@ -36,8 +36,6 @@ if bd == 9:
 
 # FUNCTIONS 
 
-goban[4][3] = te.s
-goban[6][4] = te.g
 def count(n): # doing range(1, n+1) is terrible to see
     return range(1, n+1, 1)
 
@@ -57,7 +55,7 @@ def printBoard():
         printf("\n%d.  " % (i))
 
         for i2 in count(bd):
-            if goban[i][i2] == te.none:
+            if goban[i][i2] == te.n:
                 printf("+")
             elif goban[i][i2] == te.s:
                 printf("◉")
@@ -76,6 +74,4 @@ def printBoard():
 
 printBoard()
 
-printf("a")
-printf("b")
 
